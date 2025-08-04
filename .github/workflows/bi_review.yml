@@ -46,6 +46,13 @@ jobs:
       - name: Install UV
         run: |
           python3 -m pip install uv
+      - name: Debug OIDC claims
+        run: |
+          echo "GitHub token claims:"
+          echo "Repository: ${{ github.repository }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Head repo: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "Base repo: ${{ github.event.pull_request.base.repo.full_name }}"
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
